@@ -23,11 +23,11 @@ static inline struct user_namespace *seq_user_ns(struct seq_file *seq)
 #endif /* (LINUX_VERSION_CODE > KERNEL_VERSION(2,6,38)) */
 
 #else
-static inline struct user_namespace *seq_user_ns(struct seq_file *seq)
-{
+static inline struct user_namespace *seq_user_ns(struct seq_file *seq);
+/*{
 	extern struct user_namespace init_user_ns;
 	return &init_user_ns;
-}
+}*/
 #endif /* CONFIG_USER_NS */
 #endif /* < 3.7 */
 

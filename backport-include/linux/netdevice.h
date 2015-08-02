@@ -138,20 +138,20 @@ static inline int ndo_do_ioctl(struct net_device *dev,
 #else
 /* XXX: this can probably just go upstream ! */
 static inline void netdev_attach_ops(struct net_device *dev,
-		       const struct net_device_ops *ops)
-{
+		       const struct net_device_ops *ops);
+/*{
 	dev->netdev_ops = ops;
-}
+}*/
 
 /* XXX: this can probably just go upstream! */
 static inline int ndo_do_ioctl(struct net_device *dev,
 			       struct ifreq *ifr,
-			       int cmd)
-{
+			       int cmd);
+/*{
 	if (dev->netdev_ops && dev->netdev_ops->ndo_do_ioctl)
 		return dev->netdev_ops->ndo_do_ioctl(dev, ifr, cmd);
 	return -EOPNOTSUPP;
-}
+}*/
 #endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)

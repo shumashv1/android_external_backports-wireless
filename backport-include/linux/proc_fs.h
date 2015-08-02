@@ -10,10 +10,10 @@
  * backport of:
  * procfs: new helper - PDE_DATA(inode)
  */
-static inline void *PDE_DATA(const struct inode *inode)
-{
+static inline void *PDE_DATA(const struct inode *inode);
+/*{
 	return PROC_I(inode)->pde->data;
-}
+}*/
 extern void proc_set_size(struct proc_dir_entry *, loff_t);
 extern void proc_set_user(struct proc_dir_entry *, kuid_t, kgid_t);
 #else
