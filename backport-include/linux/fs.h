@@ -8,6 +8,11 @@
  */
 #include <linux/uidgid.h>
 
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(3,4,0))
+#define simple_open LINUX_BACKPORT(simple_open)
+extern int simple_open(struct inode *inode, struct file *file);
+#endif
+
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,9,0)
 /**
  * backport of:
@@ -23,10 +28,13 @@ static inline struct inode *file_inode(struct file *f);
 	return f->f_path.dentry->d_inode;
 }*/
 #endif
+
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,4,0))
 #define simple_open LINUX_BACKPORT(simple_open)
 extern int simple_open(struct inode *inode, struct file *file);
 #endif
+
+
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,35)
 #define noop_llseek LINUX_BACKPORT(noop_llseek)
